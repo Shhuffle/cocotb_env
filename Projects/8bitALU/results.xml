@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1750924048" />
+    <testcase name="test_ALU" classname="test_ALU" file="/home/safal/cocotb_env/Projects/8bitALU/test_ALU.py" lineno="8" time="0.003298521041870117" sim_time_ns="320.001" ratio_time="97013.47844625948" />
+  </testsuite>
+</testsuites>
