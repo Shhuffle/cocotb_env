@@ -1,6 +1,0 @@
-<testsuites name="results">
-  <testsuite name="all" package="all">
-    <property name="random_seed" value="1750916534" />
-    <testcase name="adder_basic_test" classname="test_adder" file="/home/safal/cocotb_env/cocotb_demo/test_adder.py" lineno="5" time="0.0008196830749511719" sim_time_ns="10.001" ratio_time="12201.057098312973" />
-  </testsuite>
-</testsuites>
