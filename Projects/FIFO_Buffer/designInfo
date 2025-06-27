@@ -1,0 +1,32 @@
+In this projet you will find the design of a FIFO. 
+
+| Signal  | Direction | Purpose                                  |
+| ------- | --------- | ---------------------------------------- |
+| `clk`   | Input     | Clock                                    |
+| `rst`   | Input     | Reset (clears the FIFO)                  |
+| `wr_en` | Input     | Write enable                             |
+| `din`   | Input     | Data to be written (e.g., 8-bit, 16-bit) |
+| `rd_en` | Input     | Read enable                              |
+| `dout`  | Output    | Data read from FIFO                      |
+| `full`  | Output    | FIFO is full, can't write more           |
+| `empty` | Output    | FIFO is empty, can't read more           |
+
+
+
+Typical Timing Behavior
+At every rising edge if wr_en is 1 and full != 0 din is written to the buffer
+At ever rising edge if rd_en is 1 and full != empty dout is extracted from the buffer
+Reset will clear the memory and pointers
+
+
+
+The fifo module will also contain 
+wr_ptr - it will point to the address where we want to write data
+rd_ptr - it will point to the address form where ouput will be read.
+Both the pointer are incremented by 1 after successfull write(for wr_ptr) or read(for rd_ptr)
+
+
+Data Sizes for this module
+din = 8 bits
+dout = 8 bits
+buffer size = 1KB
