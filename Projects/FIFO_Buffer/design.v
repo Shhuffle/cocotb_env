@@ -42,6 +42,7 @@ module FIFO (
                     rd_ptr <= rd_ptr + 1;                                            
             end
             if(!rd_en) begin 
+                dout <= 8'b0;
                 
             end
         end

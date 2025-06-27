@@ -15,6 +15,12 @@ async def FIFO_test(dut):
         dut.rd_en.value = b[i]
         dut.wr_en.value = a[i]
         await Timer(5, units = "ns")
+        out = dut.dout.value
+        print(f"The value read from the dut {out}")
+        assert c[i] == out, f"Out mismatach expected {c[i]} got {out}"
+        
+
+
         
 
 
