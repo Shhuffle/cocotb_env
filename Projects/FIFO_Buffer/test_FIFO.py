@@ -18,7 +18,9 @@ async def FIFO_test(dut):
         out = dut.dout.value
         print(f"The value read from the dut {out}")
         assert c[i] == out, f"Out mismatach expected {c[i]} got {out}"
+
         
+
 
 
         
