@@ -39,8 +39,10 @@ module FIFO (
                 if(rd_ptr == 16'd1023)
                     rd_ptr <= 16'b0; 
                 else 
-                    rd_ptr <= rd_ptr + 1;
-                                            
+                    rd_ptr <= rd_ptr + 1;                                            
+            end
+            if(!rd_en) begin 
+                
             end
         end
     end
