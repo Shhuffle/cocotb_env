@@ -4,7 +4,7 @@ module FIFO (
     output logic full, empty,
     output logic [7:0] dout
 );
-    logic [7:0] mem[0:1024];
+    logic [7:0] mem[0:1023];
     logic [15:0] count;
 
     parameter one_kb = 10'd1024;
@@ -19,18 +19,29 @@ module FIFO (
             foreach (mem[i]) begin
                 mem[i] <= 8'b0;
             end
-            count <= 10'b0;
-            wr_ptr <= 15'b0;
-            rd_ptr <= 15'b0;
+            count <= 16'b0;
+            wr_ptr <= 16'b0;
+            rd_ptr <= 16'b0;
 
         end else if(rst) begin 
             if(wr_en && !full) begin 
                 mem[wr_ptr] <= din;
-                wr_ptr <= wr_ptr + 1;
-                            
-            end
+                if(wr_ptr == 16'd1023)
+                    wr_ptr <= 16'b0;
+                else  
+                    wr_ptr <= wr_ptr + 1;
 
+                count <= count + 1;              
+            end
+            
+            if(rd_en && !empty) begin 
+                dout <= mem[rd_ptr];
+                if(rd_ptr == 16'd1023)
+                    rd_ptr <= 16'b0; 
+                else 
+                    rd_ptr <= rd_ptr + 1;
+                                            
+            end
         end
     end
-
 endmodule
