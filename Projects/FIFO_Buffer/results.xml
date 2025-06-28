@@ -1,0 +1,8 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1751052447" />
+    <testcase name="FIFO_test" classname="test_FIFO" file="/home/safal/cocotb_env/Projects/FIFO_Buffer/test_FIFO.py" lineno="6" time="0.003041982650756836" sim_time_ns="80.001" ratio_time="26298.966557253705">
+      <failure message="Test failed with RANDOM_SEED=1751052447" />
+    </testcase>
+  </testsuite>
+</testsuites>
