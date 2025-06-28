@@ -12,7 +12,7 @@ This repository contains a collection of **Cocotb-based testbenches** for variou
 -  **Design description** is available in the `designInfo` file inside the project folder.
 
 ### 🔹 8-bit ALU
-- Supports basic arithmetic and logical operations.
+- Supports basic arithmetic +,-,/,* for 8 bit data.
 - Uses random test vectors for functional verification.
 -  **Design description** available in `designInfo`.
 
