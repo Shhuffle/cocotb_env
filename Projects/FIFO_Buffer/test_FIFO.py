@@ -1,39 +1,42 @@
 import cocotb
-import cocotb.clock
-from cocotb.triggers import RisingEdge, Timer 
-from cocotb.clock import Clock
 import random
-
+from cocotb.triggers import Timer
+from FIFOTransaction import FIFOTransaction
+from FIFODriver import FIFODriver
+from FIFOMonitor import FIFOMonitor
+from FIFOScoreboard import FIFOScoreboard
 
 @cocotb.test()
-async def FIFO_test(dut):
-    a = [1,0]
-    b = [0,1]
-    c = ["zzzzzzzz",12]
+async def run_fifo_test(dut):
+    driver = FIFODriver(dut)
+    monitor = FIFOMonitor(dut)
+    scoreboard = FIFOScoreboard()
 
-    cocotb.start_soon(Clock(dut.clk, 2, units="ns").start())
+    cocotb.start_soon(monitor.observe())
+
+    # Reset DUT
     dut.rst.value = 0
-    await Timer(5, units="ns")
+    dut.wr_en.value = 0
+    dut.rd_en.value = 0
+    await Timer(10, units="ns")
     dut.rst.value = 1
-    await RisingEdge(dut.clk)
+    await Timer(10, units="ns")
 
-    for i in range (2):
-        dut.din.value = 12
-        dut.rd_en.value = b[i]
-        dut.wr_en.value = a[i]
-        await Timer(5, units = "ns")
-        out = dut.dout.value
-        print(f"{i} Wd en {dut.wr_en.value} |din {dut.din.value}| Rd en {dut.rd_en.value}|Count {dut.count.value}|Val {out} | Full {dut.full.value} | Empty {dut.empty.value} | wr_ptr {dut.wr_ptr.value} | rd_ptr {dut.rd_ptr.value} | rst {dut.rst.value} | clk {dut.clk.value}")
-        assert c[i] == out, f"{i} Out mismatach expected {c[i]} got {out}"
+    # Write 10 values
+    for _ in range(10):
+        val = random.randint(0, 255)
+        txn = FIFOTransaction(data=val, write=True)
+        await driver.send(txn)
+        scoreboard.add_expected(val)
 
-        
+    # Read 10 values
+    for _ in range(10):
+        txn = FIFOTransaction(read=True)
+        await driver.send(txn)
 
+    # Give monitor time to capture
+    await Timer(50, units="ns")
+    for txn in monitor.observed:
+        scoreboard.add_actual(txn.dout)
 
-
-        
-
-
-
-
-
-
+    scoreboard.check()
