@@ -2,7 +2,7 @@ module FIFO (
     input  logic clk,rst,wr_en,rd_en,
     input  logic [7:0] din,
     output logic full, empty,
-    output logic [7:0] dout
+    output bit [7:0] dout
 );
     logic [7:0] mem[0:1023];
     logic [15:0] count;
@@ -22,7 +22,7 @@ module FIFO (
             count <= 16'b0;
             wr_ptr <= 16'b0;
             rd_ptr <= 16'b0;
-            dout <= 8'bz; //Buffer in high impedance after each reset.
+            dout <= 8'b0; //Buffer in high impedance after each reset.
             $display("Inside rst"); //for debugginf purpose
             
 

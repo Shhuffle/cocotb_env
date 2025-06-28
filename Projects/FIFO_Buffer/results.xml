@@ -1,6 +1,6 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1751088246" />
-    <testcase name="FIFO_test" classname="test_FIFO" file="/home/safal/cocotb_env/Projects/FIFO_Buffer/test_FIFO.py" lineno="8" time="0.006570339202880859" sim_time_ns="16.001" ratio_time="2435.338497133319" />
+    <property name="random_seed" value="1751095715" />
+    <testcase name="run_fifo_test" classname="test_FIFO" file="/home/safal/cocotb_env/Projects/FIFO_Buffer/test_FIFO.py" lineno="14" time="0.008750200271606445" sim_time_ns="210.001" ratio_time="23999.56497926487" />
   </testsuite>
 </testsuites>
