@@ -9,17 +9,17 @@ This repository contains a collection of **Cocotb-based testbenches** for variou
 ### 🔹 FIFO Buffer
 - Implements a 1024-depth FIFO with `write`, `read`, `full`, `empty` control.
 - Verified using UVM-style components: transaction, driver, monitor, scoreboard.
-- 📄 **Design description** is available in the `designInfo` file inside the project folder.
+-  **Design description** is available in the `designInfo` file inside the project folder.
 
 ### 🔹 8-bit ALU
 - Supports basic arithmetic and logical operations.
 - Uses random test vectors for functional verification.
-- 📄 **Design description** available in `designInfo`.
+-  **Design description** available in `designInfo`.
 
 ### 🔹 8-bit Full Adder
 - Adds two 8-bit inputs with carry support.
 - Simple Cocotb testbench for validation.
-- 📄 **Design description** available in `designInfo`.
+-  **Design description** available in `designInfo`.
 
 ---
 
