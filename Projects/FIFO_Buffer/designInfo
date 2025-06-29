@@ -13,7 +13,7 @@ In this projet you will find the design of a FIFO.
 
 
 
-Typical Timing Behavio
+Typical Timing Behavior
 At every rising edge if wr_en is 1 and full != 0 din is written to the buffer
 At ever rising edge if rd_en is 1 and full != empty dout is extracted from the buffer
 Reset will clear the memory and pointers
